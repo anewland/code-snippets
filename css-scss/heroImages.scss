@@ -1,0 +1,80 @@
+$break-extraSmall: 375px; // mobile
+$break-small: 768px; // tablet
+$break-medium: 1024px; // smallDesktop
+$break-large: 1440px; // largeDesktop
+
+@mixin respond-to($media) {
+  @if $media==xSmall {hero
+    // mobile
+    @media screen and (min-width: $break-extraSmall) {
+      @content;
+    }
+  }
+
+  @if $media==small {
+    // tablet
+    @media screen and (min-width: $break-small) {
+      @content;
+    }
+  }
+
+  @if $media==medium {
+    // smallDesktop
+    @media screen and (min-width: $break-medium) {
+      @content;
+    }
+  }
+
+  @if $media==large {
+    // largeDesktop
+    @media screen and (min-width: $break-large) {
+      @content;
+    }
+  }
+}
+
+@mixin heroImage($page) {
+  background-image: url("/global/images/heroes/#{$page}/hero-sm.jpg");
+
+  @include respond-to(medium) {
+    background-image: url("/global/images/heroes/#{$page}/hero-lg.jpg");
+  }
+
+  @include respond-to(large) {
+    background-image: url("/global/images/heroes/#{$page}/hero-xlg.jpg");
+  }
+}
+
+// List used to generate hero images from directories
+$pageList: art homepage aboutus nfl college-football;
+
+#main-banner {
+  background-image: url("/global/images/heroes/defaulthero-sm.jpg");
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
+  height: 540px;
+  padding: 0;
+
+  @include respond-to(small) {
+    background-position: top center;
+    height: 540px;
+  }
+
+  @include respond-to(medium) {
+    background-image: url("/global/images/heroes/defaulthero-lg.jpg");
+    height: 540px;
+  }
+
+  @include respond-to(large) {
+    background-image: url("/global/images/heroes/defaulthero-xlg.jpg");
+    height: 70vh;
+  }
+
+  @each $page in $pageList {
+    &.#{$page} {
+      @include heroImage(#{$page});
+    }
+  }
+}
