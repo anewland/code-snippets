@@ -1,0 +1,103 @@
+$server: 'https://1430908823.rsc.cdn77.org';
+$weights: regular light thin medium bold semibold extrabold;
+
+/* functions and mixins */
+@function calculateRem($size) {
+    $remSize: ($size)/16;
+    @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+    font-size: ($size)+px;
+    font-size: calculateRem($size);
+}
+
+@mixin lineHeightSize($size) {
+    line-height: ($size)+px;
+    line-height: calculateRem($size);
+}
+
+@mixin font($fontsize, $lineheight) {
+    @include fontSize($fontsize);
+    @include lineHeightSize($lineheight);
+}
+
+/* uses the list above to create all the font-face code */
+@each $w in $weights {
+    @font-face {
+        font-family: 'proxima_nova#{$w}';
+        src: url('#{$server}/fonts/proximanova-#{$w}-webfont.eot');
+        src: url('#{$server}/fonts/proximanova-#{$w}-webfont.eot?#iefix') format('embedded-opentype'),
+        url('#{$server}/fonts/proximanova-#{$w}-webfont.woff2') format('woff2'),
+        url('#{$server}/fonts/proximanova-#{$w}-webfont.woff') format('woff'),
+        url('#{$server}/fonts/proximanova-#{$w}-webfont.ttf') format('truetype'),
+        url('#{$server}/fonts/proximanova-#{$w}-webfont.svg#proxima_nova#{$w}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+@mixin proximaregular {
+    font-family: 'proxima_novaregular', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximalight {
+    font-family: 'proxima_novalight', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximathin {
+    font-family: 'proxima_novathin', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximamedium {
+    font-family: 'proxima_novamedium', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximabold {
+    font-family: 'proxima_novabold', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximasemibold {
+    font-family: 'proxima_novasemibold', arial, sans-serif;
+    font-weight: normal;
+}
+
+@mixin proximaextrabold {
+    font-family: 'proxima_novaextrabold', arial, sans-serif;
+    font-weight: normal;
+}
+
+/* classes */
+.primaryHeader {
+    @include font(42, 38);
+    @include proximaextrabold();
+    margin-bottom: 32px;
+}
+
+.secondaryHeader {
+    @include font(36, 40);
+    @include proximabold();
+    margin-bottom: 16px;
+}
+
+.regularFont {
+    @include font(16, 20);
+    @include proximaregular();
+    margin-bottom: 8px;
+}
+
+.thin {
+    @include proximathin();
+}
+
+.container {
+    width: calc(100%);
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 32px;
+}
