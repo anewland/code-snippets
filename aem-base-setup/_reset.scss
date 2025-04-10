@@ -1,0 +1,156 @@
+// HTML5 Reset
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  line-height: 1;
+  background: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+li,
+figure,
+figcaption,
+table,
+fieldset,
+legend,
+form,
+label,
+input,
+select,
+button,
+textarea,
+article,
+aside,
+details,
+summary,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+}
+
+mark,
+ins {
+  background-color: #ff9;
+  color: #000;
+}
+
+mark {
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Accessibility */
+.using-mouse {
+
+  &:focus:before,
+  &:active:before {
+    border: none !important;
+    animation: none !important;
+  }
+}

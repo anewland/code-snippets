@@ -1,0 +1,25 @@
+$fontweights: 'light', 'thin', 'medium', 'regular', 'semibold', 'bold', 'extrabold';
+
+// font-weights
+.font {
+  @each $weight in $fontweights {
+    &-#{$weight} {
+      @include proximanova(#{$weight});
+    }
+  }
+}
+
+.font-kanedagothic {
+  font-family: var(--kanedagothic);
+  text-transform: uppercase;
+}
+
+// font-sizes, pulls from the varialbles partial
+@each $size, $properties in $font-sizes {
+  .text-#{$size},
+  .text-#{$size} *,
+  .text-#{$size}:is(p, ul, ol),
+  .text-#{$size}:is(h1, h2, h3, h4, h5, h6) {
+    @include text($size);
+  }
+}

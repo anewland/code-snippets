@@ -1,0 +1,26 @@
+/* GRID Settings */
+$grid-width: 1296px;
+$gutters: 20px;
+$columns: 12;
+
+/* Font Sizes */
+$font-sizes: (
+  10: (mobile: (10, 10)),
+  12: (mobile: (12, 12)),
+  14: (mobile: (14, 16)),
+  16: (mobile: (16, 21)),
+  18: (mobile: (18, 24)),
+  20: (mobile: (20, 24)),
+  24: (mobile: (24, 36)),
+  28: (mobile: (24, 24), desktop: (28, 40)),
+  30: (mobile: (30, 32)),
+  32: (mobile: (28, 30), desktop: (32, 32)),
+  36: (mobile: (32, 32), desktop: (36, 35)),
+  44: (mobile: (36, 36), desktop: (44, 42)),
+  48: (mobile: (48, 52)),
+  52: (mobile: (44, 43), desktop: (56, 56)),
+  60: (mobile: (60, 54)),
+  62: (mobile: (44, 43), desktop: (62, 58)),
+  72: (mobile: (72, 66)),
+  94: (mobile: (44, 32), desktop: (94, 90))
+);

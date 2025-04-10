@@ -1,0 +1,52 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:list';
+
+@mixin font($size, $line: $size, $weight: null, $spacing: null) {
+  @if math.div($line, $size) < 1.5 {
+    @warn 'Line-height will not pass WCAG AAA';
+  }
+
+  font-size: #{$size}px;
+  font-size: #{math.div($size, 16)}rem;
+  line-height: #{$line}px;
+  line-height: #{math.div($line, 16)}rem;
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $spacing {
+    letter-spacing: $spacing;
+  }
+}
+
+// Pulls keys from the _variables partial
+@mixin text($key) {
+  $entry: map.get($font-sizes, $key);
+
+  @if meta.type-of($entry) == 'map' {
+    $mobile: map.get($entry, mobile);
+
+    @include font(list.nth($mobile, 1), list.nth($mobile, 2));
+
+    @if map.has-key($entry, tablet) {
+      $tablet: map.get($entry, tablet);
+
+      @include tablet {
+        @include font(list.nth($tablet, 1), list.nth($tablet, 2));
+      }
+    }
+
+    @if map.has-key($entry, desktop) {
+      $desktop: map.get($entry, desktop);
+
+      @include desktop {
+        @include font(list.nth($desktop, 1), list.nth($desktop, 2));
+      }
+    }
+  } @else {
+    @warn 'Invalid text key: #{$key}';
+  }
+}
