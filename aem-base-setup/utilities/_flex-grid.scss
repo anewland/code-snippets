@@ -1,0 +1,74 @@
+@use 'sass:math';
+$column-width: math.div(100%, $columns);
+
+.container {
+  width: calc(100%);
+  margin: 0 auto;
+  padding: 0 math.div($gutters, 2);
+
+  @include tablet {
+    max-width: 990px;
+  }
+
+  @include desktop {
+    max-width: $grid-width;
+    padding: 0 math.div($grid-width, 20);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+
+  @include tablet {
+    margin: 0 math.div($gutters, -2);
+  }
+
+  @include dev-only {
+    min-height: 100px;
+  }
+}
+
+%grid-column {
+  position: relative;
+  width: 100%;
+  min-height: 1px; // Prevents colums from collapsing when empty
+  margin: math.div($gutters, 2) 0;
+
+  @include dev-only {
+    min-height: 100px;
+  }
+}
+
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    @extend %grid-column;
+
+    @include tablet {
+      width: calc(#{$column-width * $i} - #{$gutters});
+      margin: math.div($gutters, 2) math.div($gutters, 2);
+    }
+
+    @include dev-only {
+      &::after {
+        content: '';
+        display: block;
+        background: var(--primary);
+        min-height: 100px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  @include tablet {
+    .offset-#{$i} {
+      margin-left: calc(#{$column-width * $i} + #{math.div($gutters, 2)}) !important;
+    }
+  }
+}

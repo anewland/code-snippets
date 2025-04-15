@@ -1,0 +1,25 @@
+// text colors
+.text {
+  @each $group-name, $color-group in $colors {
+    @if $group-name == 'brand-colors' {
+      @each $name, $color in $color-group {
+        &-color--#{$name} {
+          color: var(--#{$name});
+        }
+      }
+    }
+  }
+}
+
+// background colors
+.background {
+  @each $group-name, $color-group in $colors {
+    @if $group-name == 'brand-colors' {
+      @each $name, $color in $color-group {
+        &-color--#{$name} {
+          background-color: var(--#{$name});
+        }
+      }
+    }
+  }
+}
