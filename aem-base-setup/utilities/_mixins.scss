@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin dev-only {
   @if $env == development {
     @content;
@@ -34,4 +36,18 @@
   @media all and (min-width: #{bp(tablet)}) and (max-width: #{bp(desktop)}) {
     @content;
   }
+}
+
+// Fonts
+@mixin proximanova($weight) {
+  $weight-value: map.get(map.get($font-weights, 'proximanova'), $weight);
+
+  @if $weight == 'light' or $weight == 'lightit' {
+    font-family: proximanova-#{$weight}, Gotham, Montserrat, Trebuchet, sans-serif;
+  } @else {
+    font-family: proximanova-#{$weight}, Arial, sans-serif;
+  }
+
+  font-weight: $weight-value;
+  text-size-adjust: none;
 }

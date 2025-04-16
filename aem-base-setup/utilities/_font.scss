@@ -1,18 +1,3 @@
-@use 'sass:map';
-
-@mixin proximanova($weight) {
-  $weight-value: map.get(map.get($font-weights, 'proximanova'), $weight);
-
-  @if $weight == 'light' or $weight == 'lightit' {
-    font-family: proximanova-#{$weight}, Gotham, Montserrat, Trebuchet, sans-serif;
-  } @else {
-    font-family: proximanova-#{$weight}, Arial, sans-serif;
-  }
-
-  font-weight: $weight-value;
-  text-size-adjust: none;
-}
-
 .font {
   @each $font-family, $weights in $font-weights {
     @each $weight, $weight-value in $weights {
