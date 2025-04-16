@@ -1,40 +1,11 @@
 :root {
-  /* DISH Media */
-  --purple: #4a2394;
-  --primary-blue: #0048ff;
-  --secondary-blue: #9fc0d8;
-  --dark-blue: #001a99;
-  --yellow-green: #e7e980;
-  --darkness: #101828;
-
-  /* Neutral Colors */
-  --base-white: #fff;
-  --base-black: #000;
-  --gray-50: #f9fafb;
-  --gray-100: #f2f4f7;
-  --gray-200: #cfd5dd;
-  --gray-300: #d0d5dd;
-  --gray-400: #98a2b3;
-  --gray-500: #697586;
-  --gray-700: #344054;
-
-  /* Status */
-  --success-light: #00873f;
-  --success-dark: #9de7bf;
-  --alert-light: #eab700;
-  --alert-dark: #ffe485;
-  --error-light: #931621;
-  --error-dark: #f4b4b9;
-  --info-light: #46237a;
-  --info-dark: #c9b4e9;
-
-  /* fonts */
-  --font-light: 'proximanova-light', Gotham, Montserrat, Trebuchet, sans-serif;
-  --font-medium: 'proximanova-medium', arial, sans-serif;
-  --font-semibold: 'proximanova-semibold', arial, sans-serif;
-  --font-bold: 'proximanova-bold', arial, sans-serif;
-  --font-extrabold: 'proximanova-extrabold', arial, sans-serif;
-  --kanedagothic: 'kanedagothic-bold', Arial, Helvetica, sans-serif;
+  @each $group-name, $color-group in $colors {
+    @if $group-name == 'brand-colors' {
+      @each $name, $color in $color-group {
+        --#{$name}: #{$color};
+      }
+    }
+  }
 
   /* Shodows */
   --box-shadow: 0 4px 0 0;

@@ -1,9 +1,17 @@
-/* GRID Settings */
-$grid-width: 1296px;
-$gutters: 20px;
+$env: development !default;
+
+// GRID Settings
+$grid-width: 1280px;
+$gutters: 16px;
 $columns: 12;
 
-/* Font Sizes */
+// Breakpotins
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1024px
+);
+
+// Font Sizes
 $font-sizes: (
   10: (mobile: (10, 10)),
   12: (mobile: (12, 12)),
@@ -11,16 +19,55 @@ $font-sizes: (
   16: (mobile: (16, 21)),
   18: (mobile: (18, 24)),
   20: (mobile: (20, 24)),
-  24: (mobile: (24, 36)),
-  28: (mobile: (24, 24), desktop: (28, 40)),
-  30: (mobile: (30, 32)),
+  24: (mobile: (24, 25)),
+  28: (mobile: (24, 24), desktop: (28, 28)),
   32: (mobile: (28, 30), desktop: (32, 32)),
   36: (mobile: (32, 32), desktop: (36, 35)),
   44: (mobile: (36, 36), desktop: (44, 42)),
-  48: (mobile: (48, 52)),
   52: (mobile: (44, 43), desktop: (56, 56)),
-  60: (mobile: (60, 54)),
   62: (mobile: (44, 43), desktop: (62, 58)),
-  72: (mobile: (72, 66)),
   94: (mobile: (44, 32), desktop: (94, 90))
+);
+
+// Font Weights
+$font-weights: (
+  'proximanova': (
+    'light': 300,
+    'lightit': 300,
+    'regular': 400,
+    'medium': 500,
+    'semibold': 600,
+    'bold': 700,
+    'extrabold': 800,
+    'black': 900
+  )
+);
+
+// Colors
+$colors: (
+  'brand-colors': (
+    primary: #2de69c,
+    secondary: #9fc0d8,
+  ),
+  'neutral-colors': (
+    base-white: #ffffff,
+    base-black: #000000,
+    gray-50: #f9fafb,
+    gray-100: #f2f4f7,
+    gray-200: #cfd5dd,
+    gray-300: #d0d5dd,
+    gray-400: #98a2b3,
+    gray-500: #697586,
+    gray-700: #344054,
+  ),
+  'status-colors': (
+    success-light: #00873f,
+    success-dark: #9de7bf,
+    alert-light: #eab700,
+    alert-dark: #ffe485,
+    error-light: #931621,
+    error-dark: #f4b4b9,
+    info-light: #46237a,
+    info-dark: #c9b4e9,
+  ),
 );

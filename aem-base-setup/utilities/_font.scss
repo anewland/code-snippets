@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+@mixin proximanova($weight) {
+  $weight-value: map.get(map.get($font-weights, 'proximanova'), $weight);
+
+  @if $weight == 'light' or $weight == 'lightit' {
+    font-family: proximanova-#{$weight}, Gotham, Montserrat, Trebuchet, sans-serif;
+  } @else {
+    font-family: proximanova-#{$weight}, Arial, sans-serif;
+  }
+
+  font-weight: $weight-value;
+  text-size-adjust: none;
+}
+
+.font {
+  @each $font-family, $weights in $font-weights {
+    @each $weight, $weight-value in $weights {
+      &-#{$font-family}--#{$weight} {
+        @if $font-family == 'proximanova' {
+          @include proximanova($weight);
+        }
+      }
+    }
+  }
+}
+
+// font-sizes
+@each $size, $properties in $font-sizes {
+  .text-#{$size},
+  .text-#{$size} *,
+  .text-#{$size}:is(p, ul, ol),
+  .text-#{$size}:is(h1, h2, h3, h4, h5, h6) {
+    @include text($size);
+  }
+}
